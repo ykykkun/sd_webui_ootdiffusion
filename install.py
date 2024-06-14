@@ -18,12 +18,12 @@ ootd = os.path.join(os.path.dirname(os.path.realpath(__file__)), "checkpoints/oo
 
 run(f"mkdir {humanparsing}")
 run(f"cd {humanparsing}")
-run("wget https://huggingface.co/levihsu/OOTDiffusion/resolve/main/checkpoints/humanparsing/parsing_atr.onnx")
-run("wget https://huggingface.co/levihsu/OOTDiffusion/resolve/main/checkpoints/humanparsing/parsing_lip.onnx")
+run("wget https://huggingface.co/levihsu/OOTDiffusion/checkpoints/humanparsing/parsing_atr.onnx")
+run("wget https://huggingface.co/levihsu/OOTDiffusion/checkpoints/humanparsing/parsing_lip.onnx")
 
 run(f"mkdir {ootd}")
 run(f"cd {ootd}")
-run("wget https://huggingface.co/levihsu/OOTDiffusion/resolve/main/checkpoints/ootd/model_index.json")
+run("wget https://huggingface.co/levihsu/OOTDiffusion/checkpoints/ootd/model_index.json")
 
 # 自己下载一下权重
 # run("git clone https://huggingface.co/levihsu/OOTDiffusion")
