@@ -16,13 +16,13 @@ from preprocess.humanparsing.run_parsing import Parsing
 from ootd.inference_ootd_hd import OOTDiffusionHD  # hd是在VTON-HD上训练的，dc是在Dress Code上训练的
 from ootd.inference_ootd_dc import OOTDiffusionDC
 
-openpose_model_hd = OpenPose(0)
-parsing_model_hd = Parsing(0)
-ootd_model_hd = OOTDiffusionHD(0)
+# openpose_model_hd = OpenPose(0)
+# parsing_model_hd = Parsing(0)
+# ootd_model_hd = OOTDiffusionHD(0)
 
-openpose_model_dc = OpenPose(1)
-parsing_model_dc = Parsing(1)
-ootd_model_dc = OOTDiffusionDC(1)
+openpose_model_dc = OpenPose(0)
+parsing_model_dc = Parsing(0)
+ootd_model_dc = OOTDiffusionDC(0)
 
 category_dict = ['upperbody', 'lowerbody', 'dress']
 category_dict_utils = ['upper_body', 'lower_body', 'dresses']
@@ -103,64 +103,64 @@ def process_dc(vton_img, garm_img, category, n_samples, n_steps, image_scale, se
 def on_ui_tabs():
     block = gr.Blocks.queue()
     with block as ootdiddusion_interface:
-        with gr.Row():
-            gr.Markdown("## Half-body")
-        with gr.Row():
-            with gr.Column():
-                vton_img = gr.Image(label="Model", sources='upload', type="filepath", height=384, value=model_hd)
-                example = gr.Examples(
-                    inputs=vton_img,
-                    examples_per_page=14,
-                    examples=[
-                        os.path.join(example_path, 'model/model_1.png'),
-                        os.path.join(example_path, 'model/model_2.png'),
-                        os.path.join(example_path, 'model/model_3.png'),
-                        os.path.join(example_path, 'model/model_4.png'),
-                        os.path.join(example_path, 'model/model_5.png'),
-                        os.path.join(example_path, 'model/model_6.png'),
-                        os.path.join(example_path, 'model/model_7.png'),
-                        os.path.join(example_path, 'model/01008_00.jpg'),
-                        os.path.join(example_path, 'model/07966_00.jpg'),
-                        os.path.join(example_path, 'model/05997_00.jpg'),
-                        os.path.join(example_path, 'model/02849_00.jpg'),
-                        os.path.join(example_path, 'model/14627_00.jpg'),
-                        os.path.join(example_path, 'model/09597_00.jpg'),
-                        os.path.join(example_path, 'model/01861_00.jpg'),
-                    ])
-            with gr.Column():
-                garm_img = gr.Image(label="Garment", sources='upload', type="filepath", height=384, value=garment_hd)
-                example = gr.Examples(
-                    inputs=garm_img,
-                    examples_per_page=14,
-                    examples=[
-                        os.path.join(example_path, 'garment/03244_00.jpg'),
-                        os.path.join(example_path, 'garment/00126_00.jpg'),
-                        os.path.join(example_path, 'garment/03032_00.jpg'),
-                        os.path.join(example_path, 'garment/06123_00.jpg'),
-                        os.path.join(example_path, 'garment/02305_00.jpg'),
-                        os.path.join(example_path, 'garment/00055_00.jpg'),
-                        os.path.join(example_path, 'garment/00470_00.jpg'),
-                        os.path.join(example_path, 'garment/02015_00.jpg'),
-                        os.path.join(example_path, 'garment/10297_00.jpg'),
-                        os.path.join(example_path, 'garment/07382_00.jpg'),
-                        os.path.join(example_path, 'garment/07764_00.jpg'),
-                        os.path.join(example_path, 'garment/00151_00.jpg'),
-                        os.path.join(example_path, 'garment/12562_00.jpg'),
-                        os.path.join(example_path, 'garment/04825_00.jpg'),
-                    ])
-            with gr.Column():
-                result_gallery = gr.Gallery(label='Output', show_label=False, elem_id="gallery", preview=True, scale=1)
+        # with gr.Row():
+        #     gr.Markdown("## Half-body")
+        # with gr.Row():
+        #     with gr.Column():
+        #         vton_img = gr.Image(label="Model", sources='upload', type="filepath", height=384, value=model_hd)
+        #         example = gr.Examples(
+        #             inputs=vton_img,
+        #             examples_per_page=14,
+        #             examples=[
+        #                 os.path.join(example_path, 'model/model_1.png'),
+        #                 os.path.join(example_path, 'model/model_2.png'),
+        #                 os.path.join(example_path, 'model/model_3.png'),
+        #                 os.path.join(example_path, 'model/model_4.png'),
+        #                 os.path.join(example_path, 'model/model_5.png'),
+        #                 os.path.join(example_path, 'model/model_6.png'),
+        #                 os.path.join(example_path, 'model/model_7.png'),
+        #                 os.path.join(example_path, 'model/01008_00.jpg'),
+        #                 os.path.join(example_path, 'model/07966_00.jpg'),
+        #                 os.path.join(example_path, 'model/05997_00.jpg'),
+        #                 os.path.join(example_path, 'model/02849_00.jpg'),
+        #                 os.path.join(example_path, 'model/14627_00.jpg'),
+        #                 os.path.join(example_path, 'model/09597_00.jpg'),
+        #                 os.path.join(example_path, 'model/01861_00.jpg'),
+        #             ])
+        #     with gr.Column():
+        #         garm_img = gr.Image(label="Garment", sources='upload', type="filepath", height=384, value=garment_hd)
+        #         example = gr.Examples(
+        #             inputs=garm_img,
+        #             examples_per_page=14,
+        #             examples=[
+        #                 os.path.join(example_path, 'garment/03244_00.jpg'),
+        #                 os.path.join(example_path, 'garment/00126_00.jpg'),
+        #                 os.path.join(example_path, 'garment/03032_00.jpg'),
+        #                 os.path.join(example_path, 'garment/06123_00.jpg'),
+        #                 os.path.join(example_path, 'garment/02305_00.jpg'),
+        #                 os.path.join(example_path, 'garment/00055_00.jpg'),
+        #                 os.path.join(example_path, 'garment/00470_00.jpg'),
+        #                 os.path.join(example_path, 'garment/02015_00.jpg'),
+        #                 os.path.join(example_path, 'garment/10297_00.jpg'),
+        #                 os.path.join(example_path, 'garment/07382_00.jpg'),
+        #                 os.path.join(example_path, 'garment/07764_00.jpg'),
+        #                 os.path.join(example_path, 'garment/00151_00.jpg'),
+        #                 os.path.join(example_path, 'garment/12562_00.jpg'),
+        #                 os.path.join(example_path, 'garment/04825_00.jpg'),
+        #             ])
+        #     with gr.Column():
+        #         result_gallery = gr.Gallery(label='Output', show_label=False, elem_id="gallery", preview=True, scale=1)
 
-        with gr.Column():
-            run_button = gr.Button(value="Run")
-            n_samples = gr.Slider(label="Images", minimum=1, maximum=4, value=1, step=1)
-            n_steps = gr.Slider(label="Steps", minimum=20, maximum=40, value=20, step=1)
-            # scale = gr.Slider(label="Scale", minimum=1.0, maximum=12.0, value=5.0, step=0.1)
-            image_scale = gr.Slider(label="Guidance scale", minimum=1.0, maximum=5.0, value=2.0, step=0.1)
-            seed = gr.Slider(label="Seed", minimum=-1, maximum=2147483647, step=1, value=-1)
+        # with gr.Column():
+        #     run_button = gr.Button(value="Run")
+        #     n_samples = gr.Slider(label="Images", minimum=1, maximum=4, value=1, step=1)
+        #     n_steps = gr.Slider(label="Steps", minimum=20, maximum=40, value=20, step=1)
+        #     # scale = gr.Slider(label="Scale", minimum=1.0, maximum=12.0, value=5.0, step=0.1)
+        #     image_scale = gr.Slider(label="Guidance scale", minimum=1.0, maximum=5.0, value=2.0, step=0.1)
+        #     seed = gr.Slider(label="Seed", minimum=-1, maximum=2147483647, step=1, value=-1)
 
-        ips = [vton_img, garm_img, n_samples, n_steps, image_scale, seed]
-        run_button.click(fn=process_hd, inputs=ips, outputs=[result_gallery])
+        # ips = [vton_img, garm_img, n_samples, n_steps, image_scale, seed]
+        # run_button.click(fn=process_hd, inputs=ips, outputs=[result_gallery])
 
         with gr.Row():
             gr.Markdown("## Full-body")
